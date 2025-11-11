@@ -3,11 +3,12 @@
 source ./common.sh
 check_root
 
-dnf install nginx -y &>> $LOG_FILE
+nf install nginx -y &>> $LOG_FILE
 validate $? "Nginx installation"
 
 systemctl start nginx &>> $LOG_FILE
 validate $? "Starting Nginx service"
+
 systemctl enable nginx &>> $LOG_FILE
 validate $? "Enabling Nginx service at boot"
 
