@@ -3,7 +3,7 @@
 source ./common.sh
 check_root
 
-nf install nginx -y &>> $LOG_FILE
+dnf install nginx -y &>> $LOG_FILE
 validate $? "Nginx installation"
 
 systemctl start nginx &>> $LOG_FILE
