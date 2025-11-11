@@ -7,6 +7,7 @@ validate $? "Nginx installation"
 
 systemctl start nginx &>> $LOG_FILE
 validate $? "Starting Nginx service"
+
 systemctl enable nginx &>> $LOG_FILE
 validate $? "Enabling Nginx service at boot"
 
@@ -22,7 +23,7 @@ validate $? "Changing to Nginx HTML directory"
 unzip /tmp/frontend.zip &>> $LOG_FILE
 validate $? "Extracting frontend code"
 
-cp /home/ec2-user/expense-shell/expense.conf /etc/nginx/default.d/expense.conf &>> $LOG_FILE
+cp /home/ec2-user/expense-1/expense.conf /etc/nginx/conf.d/expense.conf &>> $LOG_FILE
 validate $? "Copying Nginx configuration file"
 
 systemctl restart nginx &>> $LOG_FILE
