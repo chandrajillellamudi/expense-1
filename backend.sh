@@ -33,7 +33,7 @@ validate $? "Unzipping backend code"
 npm install &>> $LOG_FILE
 validate $? "Installing backend dependencies"
 
-cp /home/ec2-user/expense-shell/backend.service /etc/systemd/system/backend.service &>> $LOG_FILE
+cp /home/ec2-user/expense-1/backend.service /etc/systemd/system/backend.service &>> $LOG_FILE
 validate $? "Copying backend systemd service file"
 
 systemctl daemon-reload &>> $LOG_FILE
