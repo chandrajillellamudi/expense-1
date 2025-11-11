@@ -41,17 +41,18 @@ validate $? "Reloading systemd daemon"
 
 systemctl start backend &>> $LOG_FILE
 validate $? "Starting backend service"
-
 systemctl enable backend &>> $LOG_FILE
 validate $? "Enabling backend service at boot"
 
 dnf install mysql -y &>> $LOG_FILE
 validate $? "MySQL client installation"
 
-mysql -h db.chandradevops.online -uexpense -pExpenseApp@1 < /app/schema/backend.sql
+mysql -h <MYSQL-SERVER-IPADDRESS> -uroot -pExpenseApp@1 < /app/schema/backend.sql &>> $LOG_FILE
 validate $? "Importing backend database schema"
 
 systemctl restart backend &>> $LOG_FILE
 validate $? "Restarting backend service"
+
+
 
 # mysql -h db.chandradevops.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
